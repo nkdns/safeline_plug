@@ -1,0 +1,11 @@
+{
+  "codeowners": ["@nkdns"],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://github.com/nkdns/safeline/",
+  "domain": "safeline",
+  "iot_class": "calculated",
+  "name": "SafeLine",
+  "requirements": [],
+  "version": "1.0.0"
+}
