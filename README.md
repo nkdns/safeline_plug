@@ -1,3 +1,1 @@
-# SafeLine for Home Assistant
-
-## Installation
+这是一个集尘开发学习库，暂无实际作用
