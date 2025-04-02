@@ -1,0 +1,36 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "该实例已配置",
+            "invalid_auth": "无效的API令牌",
+            "cannot_connect": "无法连接到雷池",
+            "invalid_host": "主机地址格式错误（必须以 http:// 或 https:// 开头）",
+            "api_error": "API请求错误"
+        },
+        "step": {
+            "user": {
+                "title": "配置雷池",
+                "data": {
+                    "host": "主机地址 (例如 https://lc.example.com)",
+                    "api_token": "API令牌"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "safeline_requests": {
+                "name": "今日请求数量"
+            },
+            "safeline_blocks": {
+                "name": "今日拦截数量"
+            },
+            "safeline_unique_ips": {
+                "name": "独立IP数量"
+            },
+            "safeline_qps": {
+                "name": "实时QPS"
+            }
+        }
+    }
+}

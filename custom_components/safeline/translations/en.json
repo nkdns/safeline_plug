@@ -1,0 +1,36 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Instance already configured",
+            "invalid_auth": "Invalid API Token",
+            "cannot_connect": "Cannot connect to Safeline",
+            "invalid_host": "Invalid host format (must start with http:// or https://)",
+            "api_error": "API request error"
+        },
+        "step": {
+            "user": {
+                "title": "Configure Safeline",
+                "data": {
+                    "host": "Host (e.g. https://lc.example.com)",
+                    "api_token": "API Token"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "safeline_requests": {
+                "name": "Today's Requests"
+            },
+            "safeline_blocks": {
+                "name": "Today's Blocks"
+            },
+            "safeline_unique_ips": {
+                "name": "Unique IPs"
+            },
+            "safeline_qps": {
+                "name": "Realtime QPS"
+            }
+        }
+    }
+}

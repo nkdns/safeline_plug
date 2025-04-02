@@ -6,9 +6,18 @@
   "dependencies": [],
   "documentation": "https://github.com/nkdns/safeline/",
   "domain": "safeline",
-  "iot_class": "calculated",
-  "name": "SafeLine",
-  "requirements": [],
-  "version": "1.0.1",
-  "issue_tracker": "https://github.com/nkdns/safeline/issues"
+  "iot_class": "cloud_polling",
+  "name": "雷池 Safeline",
+  "integration_type": "device",
+  "requirements": [
+    "aiohttp>=3.8.0"
+  ],
+  "version": "1.0.2",
+  "issue_tracker": "https://github.com/nkdns/safeline/issues",
+  "translations": [
+    "zh-Hans",
+    "en"
+  ],
+  "logo": "logo.png",
+  "icon": "icon.png"
 }
