@@ -1,11 +1,11 @@
 """雷池集成配置流程"""
 import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.core import callback
 import aiohttp
 from .const import DOMAIN, API_GET_QPS, API_TIMEOUT
 
 class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    '''雷池实例的配置流对象'''
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
@@ -19,19 +19,16 @@ class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # 格式校验
                 if not host.startswith(("http://", "https://")):
                     raise vol.Invalid("invalid_host_format")
-                    
                 # 连接测试
                 if await self._test_connection(host, api_token):
                     # 唯一性检查
                     await self.async_set_unique_id(f"safeline_plug_{host.split('//')[1]}")
                     self._abort_if_unique_id_configured()
-                    
                     # 创建配置项
                     return self.async_create_entry(
                         title=f"雷池 ({host})",
                         data={"host": host, "api_token": api_token}
                     )
-                    
             except aiohttp.ClientResponseError as err:
                 if err.status == 401:
                     errors["base"] = "invalid_auth"

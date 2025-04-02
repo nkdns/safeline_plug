@@ -21,4 +21,3 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """卸载 Safeline 集成的入口点。"""
     return await hass.config_entries.async_unload_platforms(entry, ["sensor"])
-

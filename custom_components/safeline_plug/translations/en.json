@@ -28,8 +28,11 @@
             "safeline_unique_ips": {
                 "name": "Unique IPs"
             },
-            "safeline_qps": {
-                "name": "Realtime QPS"
+            "qps": {
+                "name": "Realtime QPS",
+                "state": {
+                    "unit": "requests/s"
+                }
             }
         }
     }

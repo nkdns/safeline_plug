@@ -28,8 +28,11 @@
             "safeline_unique_ips": {
                 "name": "独立IP数量"
             },
-            "safeline_qps": {
-                "name": "实时QPS"
+            "qps": {
+                "name": "实时QPS",
+                "state": {
+                    "unit": "次/秒"
+                }
             }
         }
     }
