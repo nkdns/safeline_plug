@@ -1,5 +1,5 @@
 """雷池集成常量"""
-DOMAIN = "safeline"
+DOMAIN = "safeline_plug"
 API_TIMEOUT = 10
 
 #API 定义

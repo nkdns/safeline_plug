@@ -22,7 +22,7 @@ class SafelineSensor(SensorEntity):
         self._api = api
         self._attr_name = name
         self._attr_icon = icon
-        self._attr_unique_id = f"safeline_{key}"
+        self._attr_unique_id = f"{DOMAIN}_{key}"
         self._attr_native_unit_of_measurement = "次/秒"
         self._state = None
         self._attr_available = False
