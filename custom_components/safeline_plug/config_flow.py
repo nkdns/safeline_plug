@@ -23,7 +23,7 @@ class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 # 连接测试
                 if await self._test_connection(host, api_token):
                     # 唯一性检查
-                    await self.async_set_unique_id(f"safeline-{host.split('//')[1]}")
+                    await self.async_set_unique_id(f"safeline_plug_{host.split('//')[1]}")
                     self._abort_if_unique_id_configured()
                     
                     # 创建配置项
@@ -53,7 +53,7 @@ class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             data_schema=data_schema,
             errors=errors,
             description_placeholders={
-                "docs_url": "https://github.com/nkdns/safeline/"
+                "docs_url": "https://github.com/nkdns/safeline_plug/"
             }
         )
 

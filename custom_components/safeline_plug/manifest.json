@@ -4,7 +4,7 @@
   ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/nkdns/safeline/README.md",
+  "documentation": "https://github.com/nkdns/safeline_plug/README.md",
   "domain": "safeline_plug",
   "iot_class": "cloud_polling",
   "name": "雷池",
@@ -13,7 +13,7 @@
     "aiohttp>=3.8.0"
   ],
   "version": "1.0.3",
-  "issue_tracker": "https://github.com/nkdns/safeline/issues",
+  "issue_tracker": "https://github.com/nkdns/safeline_plug/issues",
   "translations": [
     "zh-Hans",
     "en"
