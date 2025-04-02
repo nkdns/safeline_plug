@@ -1,4 +1,5 @@
 """雷池集成常量"""
+from homeassistant.components.sensor import SensorStateClass
 DOMAIN = "safeline_plug"
 API_TIMEOUT = 10
 
@@ -12,6 +13,7 @@ SENSOR_TYPES = {
         "name": "实时qps",
         "key": "qps",
         "path": "/api/stat/qps",
-        "unit": "次/秒"
+        "unit": "次/秒",
+        "state_class": SensorStateClass.MEASUREMENT
     }
 }

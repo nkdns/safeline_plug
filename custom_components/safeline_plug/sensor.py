@@ -3,8 +3,7 @@ import logging
 from urllib.parse import urlparse
 from datetime import timedelta
 import aiohttp
-from homeassistant.components.sensor import SensorEntity
-from homeassistant.helpers.entity import EntityDescription
+from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
 from .const import DOMAIN, SENSOR_TYPES, API_TIMEOUT
 
 _LOGGER = logging.getLogger(__name__)
@@ -25,9 +24,13 @@ class SafelineSensor(SensorEntity):
         self._api = api
         self._safelinesensor = sensor
         self._path = SENSOR_TYPES[self._safelinesensor]['path']
-        self.entity_description = EntityDescription(
-            key= SENSOR_TYPES[self._safelinesensor]['key'],
-            name= SENSOR_TYPES[self._safelinesensor]['name']
+        self._key = SENSOR_TYPES[self._safelinesensor]['key']
+        self.entity_description = SensorEntityDescription(
+            key = SENSOR_TYPES[self._safelinesensor]['key'],
+            name = SENSOR_TYPES[self._safelinesensor]['name'],
+            icon = SENSOR_TYPES[self._safelinesensor]['icon'],
+            native_unit_of_measurement = SENSOR_TYPES[self._safelinesensor]['unit'],
+            state_class = SENSOR_TYPES[self._safelinesensor]['state_class']
         )
         self._parsed_url = urlparse(self._api.host)
         self._attr_unique_id = (
@@ -35,25 +38,19 @@ class SafelineSensor(SensorEntity):
             f"_{self._parsed_url.netloc}"
         )
         self.entity_id = f"sensor.{SENSOR_TYPES[self._safelinesensor]['key']}"
-        self._attr_name = SENSOR_TYPES[self._safelinesensor]['name']
-        self._attr_icon = SENSOR_TYPES[self._safelinesensor]['icon']
-        self._attr_native_unit_of_measurement = SENSOR_TYPES[self._safelinesensor]['unit']
         self._state = None
         self._attr_available = False
-        self._key = SENSOR_TYPES[self._safelinesensor]['key']
 
     async def async_update(self):
-        '''跟新传感器数据的方法'''
+        '''更新传感器数据的方法'''
         try:
-            # 获取原始数据
+            raw_data = await self._api.fetch_data(self._path)
             if self._key == "qps":
-                raw_data = await self._api.fetch_data()
                 qpslist = raw_data.get("data", {}).get("nodes", [])
                 value = 0
                 if "0.0.0.0:0" in qpslist[-1]:
-                    value = qpslist[-1]["0.0.0.0:0"]  # 根据实际API响应结构调整
+                    value = qpslist[-1]["0.0.0.0:0"]
             else:
-                raw_data = await self._api.fetch_stats()
                 value = raw_data.get("data", {}).get(self._key)
             # 数据有效性检查
             if value is None:
