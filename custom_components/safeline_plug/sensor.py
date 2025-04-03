@@ -5,16 +5,14 @@ from datetime import timedelta
 from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN, SENSOR_TYPES
-from .data_coordinator import SafelineDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 SCAN_INTERVAL = timedelta(seconds=5)
 
 async def async_setup_entry(hass, entry, async_add_entities):
     '''入口函数'''
-    config = entry.data
-    coordinator = SafelineDataUpdateCoordinator(hass,config)
-    await coordinator.async_config_entry_first_refresh()
+    coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
+    hass.loop.create_task(coordinator.async_start())
 
     sensors = [
         SafelineSensor(coordinator, sensor)
@@ -52,8 +50,12 @@ class SafelineSensor(CoordinatorEntity,SensorEntity):
 
     @property
     def available(self) -> bool:
-        """实体可用性 = 协调器最近一次更新是否成功"""
-        return super().available and self.coordinator.last_update_success
+        """实体可用性 -> 协调器最近一次更新是否成功 -> 是否包含数据字典"""
+        return (
+            super().available
+            and self.coordinator.last_update_success
+            and self._key in self.coordinator.data
+        )
 
     async def async_update(self):
         '''更新传感器数据的方法'''
