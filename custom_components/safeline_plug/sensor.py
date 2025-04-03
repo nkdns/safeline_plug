@@ -35,7 +35,8 @@ class SafelineSensor(CoordinatorEntity,SensorEntity):
             name = sensor_config['name'],
             icon = sensor_config['icon'],
             native_unit_of_measurement = sensor_config['unit'],
-            state_class = sensor_config['state_class']
+            state_class = sensor_config['state_class'],
+            translation_key = sensor_config['key']
         )
         parsed_url = urlparse(self.coordinator.safelinedata.host)
         self._attr_unique_id = (
