@@ -1,6 +1,6 @@
 {
     "config": {
-        "abort": {
+        "error": {
             "already_configured": "Instance already configured",
             "invalid_auth": "Invalid API Token",
             "cannot_connect": "Cannot connect to Safeline",
@@ -19,19 +19,22 @@
     },
     "entity": {
         "sensor": {
-            "safeline_requests": {
-                "name": "Today's Requests"
-            },
-            "safeline_blocks": {
-                "name": "Today's Blocks"
-            },
-            "safeline_unique_ips": {
-                "name": "Unique IPs"
-            },
             "qps": {
                 "name": "Realtime QPS",
                 "state": {
-                    "unit": "requests/s"
+                    "unit_of_measurement": "requests/s"
+                }
+            },
+            "attack_ip": {
+                "name": "Attack IP today",
+                "state": {
+                    "unit_of_measurement": "unit"
+                }
+            },
+            "intercept": {
+                "name": "Intercept today",
+                "state": {
+                    "unit_of_measurement": "times"
                 }
             }
         }

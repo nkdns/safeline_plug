@@ -1,6 +1,6 @@
 {
     "config": {
-        "abort": {
+        "error": {
             "already_configured": "该实例已配置",
             "invalid_auth": "无效的API令牌",
             "cannot_connect": "无法连接到雷池",
@@ -19,19 +19,22 @@
     },
     "entity": {
         "sensor": {
-            "safeline_requests": {
-                "name": "今日请求数量"
-            },
-            "safeline_blocks": {
-                "name": "今日拦截数量"
-            },
-            "safeline_unique_ips": {
-                "name": "独立IP数量"
-            },
             "qps": {
                 "name": "实时QPS",
                 "state": {
-                    "unit": "次/秒"
+                    "unit_of_measurement": "次/秒"
+                }
+            },
+            "attack_ip": {
+                "name": "今日攻击IP",
+                "state": {
+                    "unit_of_measurement": "个"
+                }
+            },
+            "intercept": {
+                "name": "今日拦截",
+                "state": {
+                    "unit_of_measurement": "次"
                 }
             }
         }
