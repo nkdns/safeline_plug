@@ -12,7 +12,7 @@
   "requirements": [
     "aiohttp>=3.8.0"
   ],
-  "version": "2.0.0",
+  "version": "2.0.1",
   "issue_tracker": "https://github.com/nkdns/safeline_plug/issues",
   "translations": [
     "zh-Hans",

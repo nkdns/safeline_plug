@@ -31,6 +31,7 @@ class SafelineSensor(CoordinatorEntity,SensorEntity):
     def _setup_entity(self):
         sensor_config = SENSOR_TYPES[self._safelinesensor]
         self.entity_description = SensorEntityDescription(
+            key = sensor_config['key'],
             name = sensor_config['name'],
             icon = sensor_config['icon'],
             native_unit_of_measurement = sensor_config['unit'],
