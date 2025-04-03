@@ -44,7 +44,7 @@ class SafelineData:
     async def _get_safeline_24h_attack(self):
         raw_data = await self._api.get_data('/api/stat/advance/attack')
         attack_data = raw_data.get("data", {})
-        self._data['attack_ip24'] = attack_data.get('attack_ip24',0)
+        self._data['attack_ip24'] = attack_data.get('attack_ip',0)
         intercept_data = attack_data.get('intercept',{})
         intercept24 = 0
         for key in intercept_data:
