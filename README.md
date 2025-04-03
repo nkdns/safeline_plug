@@ -10,8 +10,8 @@
 
 ### 方法 1：通过 [HACS](https://hacs.xyz/) 商店安装
 
-HACS > 右上角三个点 > Custom repositories > Repository: https://github.com/nkdns/safeline.git & Category or Type: Integration > ADD > 点击 HACS 的 New 或 Available for download 分类下的 Safeline ，进入集成详情页  > DOWNLOAD。
+HACS > 右上角三个点 > Custom repositories > Repository: https://github.com/nkdns/safeline_plug.git & Category or Type: Integration > ADD > 点击 HACS 的 New 或 Available for download 分类下的 Safeline ，进入集成详情页  > DOWNLOAD。
 
 ### 方法 2：通过 [Samba](https://github.com/home-assistant/addons/tree/master/samba) 或 [FTPS](https://github.com/hassio-addons/addon-ftp) 手动安装
 
-下载并将 `custom_components/safeline` 文件夹复制到 Home Assistant 的 `custom_components` 文件夹下并重载 Home Assistant 。
+下载并将 `custom_components/safeline_plug` 文件夹复制到 Home Assistant 的 `custom_components` 文件夹下并重载 Home Assistant 。
