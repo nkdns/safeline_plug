@@ -2,7 +2,8 @@
 import voluptuous as vol
 from homeassistant import config_entries
 import aiohttp
-from .const import DOMAIN, API_GET_QPS, API_TIMEOUT
+from .const import DOMAIN, TEST_API
+from .data_fetcher import SafelineAPI
 
 class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     '''雷池实例的配置流对象'''
@@ -55,14 +56,5 @@ class SafelineConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     async def _test_connection(self, host, token):
-        url = f"{host}{API_GET_QPS}"
-        headers = {"X-SLCE-API-TOKEN": token}
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                url,
-                headers=headers,
-                timeout=API_TIMEOUT
-            ) as response:
-                response.raise_for_status()
-                return await response.json()
+        safelineapi = SafelineAPI(host, token)
+        return await safelineapi.get_data(TEST_API)
